@@ -1,0 +1,64 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <fstream>
+#include <Windows.h>
+
+using namespace std;
+
+bool compound_nominal_predicate(const string& input_word, const string& filename)
+{
+	fstream file;
+	string file_iterator;
+	file.open(filename, ios::in);
+	while (getline(file, file_iterator))
+	{
+		if (file_iterator == input_word)
+		{
+			file.close();
+			return true;
+		}
+		file_iterator.clear();
+	}
+	return false;
+}
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	setlocale(LC_ALL, "Russian");
+	string file_iterator;
+	fstream test_file;
+	fstream fout;
+	
+	bool is_compound_nominal_predicate = false;
+	test_file.open("test.txt", ios::in);
+	fout.open("out.txt", ios::out);
+	while (getline(test_file, file_iterator))
+	{
+		istringstream buff(file_iterator);
+		file_iterator.clear();
+		string word;
+		while (getline(buff, word, ' '))
+		{
+			if (is_compound_nominal_predicate == true)
+			{
+				is_compound_nominal_predicate = false;
+				fout << " " << word << endl;
+				word.clear();
+				continue;
+			}
+			if (compound_nominal_predicate(word, "bundle.txt") == true)
+			{
+				fout << word;
+				is_compound_nominal_predicate = true;
+				word.clear();
+				continue;
+			}
+		}
+	}
+	test_file.close();
+	fout.close();
+	return 0;
+}
