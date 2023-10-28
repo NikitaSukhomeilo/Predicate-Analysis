@@ -1,7 +1,7 @@
 #include"Auxilliary_Functions.h"
 void make_register(string& str)
 {
-	// преобразование к одному регистру слов
+	// РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ Рє РѕРґРЅРѕРјСѓ СЂРµРіРёСЃС‚СЂСѓ СЃР»РѕРІ
 	int i = str[0];
 	if (i < (-32) && i >(-64))
 	{
@@ -54,21 +54,21 @@ string get_current_local_time()
 	str = format("{:%Y.%m.%d_%H.%M}", time);
 	return str;
 }
-void clear_substring_from_punctuation_marks(string& str, ifstream& reading_filestream) // функция очистки строки от знаков препинания
+void clear_substring_from_punctuation_marks(string& str, ifstream& reading_filestream) // С„СѓРЅРєС†РёСЏ РѕС‡РёСЃС‚РєРё СЃС‚СЂРѕРєРё РѕС‚ Р·РЅР°РєРѕРІ РїСЂРµРїРёРЅР°РЅРёСЏ
 {
 	reading_filestream.clear();
 	reading_filestream.seekg(0, ios::beg);
-	string file_iterator; // буферная строка
-	getline(reading_filestream, file_iterator); // считать строку, состоящую из знаков препинания, из файла
+	string file_iterator; // Р±СѓС„РµСЂРЅР°СЏ СЃС‚СЂРѕРєР°
+	getline(reading_filestream, file_iterator); // СЃС‡РёС‚Р°С‚СЊ СЃС‚СЂРѕРєСѓ, СЃРѕСЃС‚РѕСЏС‰СѓСЋ РёР· Р·РЅР°РєРѕРІ РїСЂРµРїРёРЅР°РЅРёСЏ, РёР· С„Р°Р№Р»Р°
 	int position = 0;
-	for (int i = 0; i < file_iterator.size(); i++) // пройтись по строке
+	for (int i = 0; i < file_iterator.size(); i++) // РїСЂРѕР№С‚РёСЃСЊ РїРѕ СЃС‚СЂРѕРєРµ
 	{
 		do
 		{
-			position = str.find(file_iterator[i]); // поиск в строке знака препинания
-			if (position != string::npos) // если найден знак препинания
+			position = str.find(file_iterator[i]); // РїРѕРёСЃРє РІ СЃС‚СЂРѕРєРµ Р·РЅР°РєР° РїСЂРµРїРёРЅР°РЅРёСЏ
+			if (position != string::npos) // РµСЃР»Рё РЅР°Р№РґРµРЅ Р·РЅР°Рє РїСЂРµРїРёРЅР°РЅРёСЏ
 			{
-				str.erase(position, 1); // удалить его
+				str.erase(position, 1); // СѓРґР°Р»РёС‚СЊ РµРіРѕ
 			}
 		} while (position != string::npos);
 		position = 0;
