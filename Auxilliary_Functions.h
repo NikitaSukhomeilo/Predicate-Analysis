@@ -13,7 +13,7 @@ void make_register(string&);
 string extract(const string&);
 int extract_number_of_sentences(const string&);
 string get_current_local_time();
-void clear_substring_from_punctuation_marks(string&, ifstream&); // функция очистки строки от знаков препинания
+void clear_substring_from_punctuation_marks(string&, ifstream&); // С„СѓРЅРєС†РёСЏ РѕС‡РёСЃС‚РєРё СЃС‚СЂРѕРєРё РѕС‚ Р·РЅР°РєРѕРІ РїСЂРµРїРёРЅР°РЅРёСЏ
 struct Predicate
 {
 	string name;
